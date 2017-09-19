@@ -1,23 +1,37 @@
 #include "stdafx.h"
 #include "ByteVector.h"
+#include "IllegalVectorSizeException.h"
+using namespace exceptions;
 
+ByteVector::ByteVector(int size):size(size) {
+	this->word = new byte[size];
+	for (size_t i = 0; i < size; i++)
+	{
+		this->setByte(i, 0);
+	}
+}
 
-byte ByteVector::getChar(int id) {
+byte ByteVector::getByte(int id) const{
 	return word[id];
 }
 
+void ByteVector::setByte(int id, byte value)
+{
+	word[id] = value;
+}
+
 ByteVector ByteVector::offestRight(int offsetsize) const {
-	ByteVector returnedvect = ByteVector();
+	ByteVector returnedvect = ByteVector(this->getLen());
 	for (int i = 0; i < size; i++)
 	{
 
 		if (offsetsize + i >= size || offsetsize + i < 0)
 		{
-			returnedvect.word[i] = 0;
+			returnedvect.setByte(i, 0);
 		}
 		else
 		{
-			returnedvect.word[i] = this->word[i + offsetsize];
+			returnedvect.setByte(i,this->getByte(i + offsetsize));
 		}
 	}
 	return returnedvect;
@@ -26,28 +40,29 @@ ByteVector ByteVector::offestRight(int offsetsize) const {
 ByteVector ByteVector::offestLeft(int offsetsize) const { return offestRight(-offsetsize); }
 
 ByteVector ByteVector::SymmetrycSumm(const ByteVector & vect) {
-	ByteVector returnedvect = ByteVector();
+	if (this->getLen() != vect.getLen())throw IllegalVectorSizeException(this->getLen(), vect.getLen());
+	ByteVector returnedvect = ByteVector(this->getLen());
 	for (size_t i = 0; i < size; i++)
 	{
-		returnedvect.word[i] = this->word[i] ^ vect.word[i];
+		returnedvect.setByte(i, this->getByte(i) ^ vect.getByte(i));
 	}
 	return returnedvect;
 }
 
- ByteVector::ByteVector(int vect) :ByteVector() {
+ ByteVector::ByteVector(int vect,int size) :ByteVector(size) {
 	for (size_t i = 0; i < size; i++)
 	{
-		word[i] = ((1 << i)&vect) != 0;
+		this->setByte(i,((1 << i)&vect) != 0);
 	}
 }
 
 //Конструктор копирования
 
-ByteVector::ByteVector(const ByteVector & vect) :ByteVector() {
+ByteVector::ByteVector(const ByteVector & vect) :ByteVector(vect.getLen()) {
 
 	for (size_t i = 0; i < size; i++)
 	{
-		this->word[i] = vect.word[i];
+		this->setByte(i, vect.getByte(i));
 	}
 
 }
@@ -60,7 +75,7 @@ ByteVector::~ByteVector() {
 ostream& operator<<(ostream& a, const ByteVector&vect) {
 	for (int i = vect.size - 1; i >= 0; i--)
 	{
-		a << vect.word[i];
+		a << vect.getByte(i);
 	}
 	return a;
 }
