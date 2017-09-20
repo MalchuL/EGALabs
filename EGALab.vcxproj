@@ -144,10 +144,13 @@
     <ClInclude Include="AbstractMethodSearching.h" />
     <ClInclude Include="ByteVector.h" />
     <ClInclude Include="ByteVectorMath.h" />
+    <ClInclude Include="CustomExceptions.h" />
     <ClInclude Include="DepthSearchMethod.h" />
     <ClInclude Include="IllegalVectorSizeException.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MonteCarlosMethodSearching.h" />
+    <ClInclude Include="SearchInWidthMethod.h" />
+    <ClInclude Include="SetSizeException.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -159,6 +162,8 @@
     <ClCompile Include="IllegalVectorSizeException.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="MonteCarlosMethodSearching.cpp" />
+    <ClCompile Include="SearchInWidthMethod.cpp" />
+    <ClCompile Include="SetSizeException.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

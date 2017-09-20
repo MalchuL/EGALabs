@@ -10,6 +10,7 @@
 #include "IllegalVectorSizeException.h"
 #include "MonteCarlosMethodSearching.h"
 #include "DepthSearchMethod.h"
+#include "SearchInWidthMethod.h"
 #include <vector>
 using namespace exceptions;
 using namespace std;
@@ -59,6 +60,7 @@ void testmethod() {
 	}
 	cout << MonteCarlosMethodSearching(vectors, values, 32, 32).find();
 	cout << DepthSearchMethod(vectors, values, 3, 32).find();
+	cout << SearchInWidthMethod(vectors, values, 4, 32).find();
 }
 void testvalue() {
 	int testval = 0b01001;
