@@ -8,15 +8,19 @@
 #include <exception>
 #include "vcruntime_exception.h"
 #include "IllegalVectorSizeException.h"
+#include "MonteCarlosMethodSearching.h"
+#include <vector>
 using namespace exceptions;
 using namespace std;
-
+using namespace MethodSearching;
+void testmethod();
 void testvalue();
 void testmera();
 constexpr int size = 5;
 int main()
 {
 	//throw IllegalVectorSizeException(1,2);
+	testmethod();
 	testvalue();
 	testmera();
 	getchar();
@@ -39,7 +43,19 @@ void testmera() {
 	
 
 }
-
+void testmethod() {
+	srand(0);
+	//ByteVector* bytes = new ByteVector[32];
+	vector<ByteVector> vectors = vector<ByteVector>();
+	vector<funcvalue> values = vector<funcvalue>();
+	
+	for (size_t i = 0; i < 32; i++)
+	{
+		vectors.push_back(ByteVector(i, 5));
+		values.push_back(abs(rand() % 60));
+	}
+	cout << MonteCarlosMethodSearching(vectors, values, 7, 60).find();
+}
 void testvalue() {
 	int testval = 0b01001;
 	//cout << testval << endl;
