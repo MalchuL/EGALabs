@@ -9,6 +9,7 @@
 #include "vcruntime_exception.h"
 #include "IllegalVectorSizeException.h"
 #include "MonteCarlosMethodSearching.h"
+#include "DepthSearchMethod.h"
 #include <vector>
 using namespace exceptions;
 using namespace std;
@@ -21,8 +22,8 @@ int main()
 {
 	//throw IllegalVectorSizeException(1,2);
 	testmethod();
-	testvalue();
-	testmera();
+//	testvalue();
+//	testmera();
 	getchar();
     return 0;
 
@@ -52,9 +53,12 @@ void testmethod() {
 	for (size_t i = 0; i < 32; i++)
 	{
 		vectors.push_back(ByteVector(i, 5));
-		values.push_back(abs(rand() % 60));
+		int t = abs(rand() % 60);
+		values.push_back(t);
+		clog << ByteVector(i, 5) << " " << t << endl;;
 	}
-	cout << MonteCarlosMethodSearching(vectors, values, 7, 60).find();
+	cout << MonteCarlosMethodSearching(vectors, values, 32, 32).find();
+	cout << DepthSearchMethod(vectors, values, 3, 32).find();
 }
 void testvalue() {
 	int testval = 0b01001;

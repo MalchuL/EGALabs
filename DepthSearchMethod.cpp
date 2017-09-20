@@ -2,11 +2,4 @@
 #include "DepthSearchMethod.h"
 
 
-DepthSearchMethod::DepthSearchMethod()
-{
-}
 
-
-DepthSearchMethod::~DepthSearchMethod()
-{
-}
