@@ -28,7 +28,7 @@ namespace MethodSearching {
 			srand(randomseed);
 			//Добавить ключи в переупорядоченный лист
 			addReorderedNums();
-
+			printreorderednums();
 			//
 
 		}
@@ -40,6 +40,7 @@ namespace MethodSearching {
 
 			//Добавить ключи в переупорядоченный лист
 			addReorderedNums();
+			printreorderednums();
 			//
 
 		}
@@ -48,9 +49,13 @@ namespace MethodSearching {
 			ByteVector* Sstar,*Si;
 			Sstar = Si = reorderednums->at(i);
 			funcvalue max = elements->at(Sstar);
+			clog << "S*:" << *Sstar << ", max:" << max<<", Omega:";
 			set* Omega= getNeighbors(Sstar);
+			printset(Omega, elements);
+			clog << endl;
 			for (i = 1; i<NSteps; i++)
 			{
+				clog << "iter" << i<< endl;
 				if (Omega->size() != 0) {
 					Si = Omega->at(i%Omega->size());
 					if (elements->at(Si) > max) 
@@ -64,6 +69,9 @@ namespace MethodSearching {
 						remove(Omega->begin(), Omega->end(), Si);
 					}
 				}
+				clog << "Si:" << *Si << ", f(Si):" << elements->at(Si) << ", S*:" << *Sstar << ", f(S*):" << max << ", Omega:";
+				printset(Omega, elements);
+				clog << endl;
 			}
 			delete Omega;
 			clog << "answer:" << *Sstar << " value:" << elements->at(Sstar)<<endl;
