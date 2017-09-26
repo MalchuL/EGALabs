@@ -18,18 +18,26 @@ using namespace MethodSearching;
 void testmethod();
 void testvalue();
 void testmera();
+void testfuncs();
 constexpr int size = 5;
 int main()
 {
 	//throw IllegalVectorSizeException(1,2);
-	testmethod();
+//	testmethod();
 //	testvalue();
 //	testmera();
+	testfuncs();
 	getchar();
     return 0;
 
 }
-
+void testfuncs() {
+	int vect1 = 0b00101;
+	cout << ByteVectorMath::GrayCode(ByteVector(0b000, 3))<<endl;
+	cout << ByteVectorMath::GrayCode(ByteVector(0b010, 3))<<endl;
+	cout << ByteVectorMath::GrayCode(ByteVector(0b110, 3))<<endl;
+	
+}
 void testmera() {
 	int vect1 = 0b00101;
 	int vect2 = 0b00110;

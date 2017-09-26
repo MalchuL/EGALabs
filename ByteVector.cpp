@@ -39,7 +39,7 @@ ByteVector ByteVector::offestRight(int offsetsize) const {
 
 ByteVector ByteVector::offestLeft(int offsetsize) const { return offestRight(-offsetsize); }
 
-ByteVector ByteVector::SymmetrycSumm(const ByteVector & vect) {
+ByteVector ByteVector::SymmetrycSumm(const ByteVector & vect) const {
 	if (this->getLen() != vect.getLen())throw IllegalVectorSizeException(this->getLen(), vect.getLen());
 	ByteVector returnedvect = ByteVector(this->getLen());
 	for (size_t i = 0; i < size; i++)

@@ -16,7 +16,7 @@ public:
 	void setByte(int id, byte value);
 	ByteVector offestRight(int offsetsize) const;
 	ByteVector offestLeft(int offsetsize) const;
-	ByteVector SymmetrycSumm(const ByteVector&vect);
+	ByteVector SymmetrycSumm(const ByteVector&vect) const;
 	ByteVector() :ByteVector(0, 0) {}
 
 	ByteVector(int vect,int size);
