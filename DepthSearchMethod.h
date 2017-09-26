@@ -55,7 +55,7 @@ namespace MethodSearching {
 			clog << endl;
 			for (i = 1; i<NSteps; i++)
 			{
-				clog << "iter" << i<< endl;
+				clog << "iter" << i << endl;
 				if (Omega->size() != 0) {
 					Si = Omega->at(i%Omega->size());
 					if (elements->at(Si) > max) 
@@ -66,7 +66,8 @@ namespace MethodSearching {
 					}
 					else
 					{
-						remove(Omega->begin(), Omega->end(), Si);
+						
+					Omega->erase(remove(Omega->begin(), Omega->end(), Si),Omega->end());
 					}
 				}
 				clog << "Si:" << *Si << ", f(Si):" << elements->at(Si) << ", S*:" << *Sstar << ", f(S*):" << max << ", Omega:";

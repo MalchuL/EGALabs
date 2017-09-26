@@ -58,9 +58,12 @@ void testmethod() {
 		values.push_back(t);
 		clog << ByteVector(i, 5) << " " << t << endl;;
 	}
-	cout << MonteCarlosMethodSearching(vectors, values, 32, 6).find();
-	cout << DepthSearchMethod(vectors, values, 6, 64).find();
-	cout << SearchInWidthMethod(vectors, values, 4, 22).find();
+	cout << "Monte Carlo"<<endl;
+	cout << MonteCarlosMethodSearching(vectors, values, 32, 6).find()<<endl << endl<<endl;
+	cout << "In Depth" << endl;
+	cout << DepthSearchMethod(vectors, values, 10, 64).find() << endl<<endl<<endl;
+	cout << "In Width" << endl;
+	cout << SearchInWidthMethod(vectors, values, 8, 22).find() << endl << endl;
 }
 void testvalue() {
 	int testval = 0b01001;
