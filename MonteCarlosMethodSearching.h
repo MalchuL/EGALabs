@@ -15,11 +15,7 @@ namespace MethodSearching {
 		{
 			this->randomseed = randomseed;
 			srand(randomseed);
-			//Добавить ключи в переупорядоченный лист
-			addReorderedNums();
-			printreorderednums();
-			
-			//
+		
 			
 		}
 		
@@ -28,24 +24,21 @@ namespace MethodSearching {
 			this->randomseed = randomseed;
 			srand(randomseed);
 			
-			//Добавить ключи в переупорядоченный лист
-			addReorderedNums();
-			printreorderednums();
-			//
 
 		}
 
 		ByteVector find() {
+			
 			int i = 0;
 			ByteVector* Sstar,*Si ;
-			Sstar = Si = reorderednums->at(i);
+			Sstar = Si = getReorderedNums()->at(i);
 			funcvalue max = elements->at(Sstar);
 			clog << "S*:" << *Sstar << ", max:" << max<<endl;
 			
-			for (i=1; i < reorderednums->size()&&i<NSteps; i++)
+			for (i=1; i < getReorderedNums()->size()&&i<NSteps; i++)
 			{
 				clog << "iter" << i<<endl;
-				Si = reorderednums->at(i);
+				Si = getReorderedNums()->at(i);
 				funcvalue Mu = elements->at(Si);
 				//clog << *Si << " " << elements->at(Si)<<endl;
 				if (Mu > max) { max = Mu;Sstar = Si;clog << "S* changed "; }

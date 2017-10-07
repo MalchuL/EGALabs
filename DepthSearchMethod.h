@@ -14,7 +14,7 @@ namespace MethodSearching {
 		int randomseed;
 		set* getNeighbors(ByteVector* vect){
 			set* returnedset = new set();
-			for (auto it = reorderednums->begin(); it != reorderednums->end(); it++)
+			for (auto it = getReorderedNums()->begin(); it != getReorderedNums()->end(); it++)
 			{
 				if (ByteVectorMath::HemmingLength(**it, *vect) == 1) { returnedset->push_back(*it); }
 			}
@@ -26,11 +26,7 @@ namespace MethodSearching {
 		{
 			this->randomseed = randomseed;
 			srand(randomseed);
-			//Добавить ключи в переупорядоченный лист
-			addReorderedNums();
-			printreorderednums();
-			//
-
+			
 		}
 
 		DepthSearchMethod(const vector<ByteVector>& vectors, const vector<funcvalue>& values, int NSteps, int randomseed) :AbstractMethodSearching(vectors, values), NSteps(NSteps)
@@ -38,16 +34,13 @@ namespace MethodSearching {
 			this->randomseed = randomseed;
 			srand(randomseed);
 
-			//Добавить ключи в переупорядоченный лист
-			addReorderedNums();
-			printreorderednums();
-			//
 
 		}
 		ByteVector find() {
+			
 			int i = 0;
 			ByteVector* Sstar,*Si;
-			Sstar = Si = reorderednums->at(i);
+			Sstar = Si = getReorderedNums()->at(i);
 			funcvalue max = elements->at(Sstar);
 			clog << "S*:" << *Sstar << ", max:" << max<<", Omega:";
 			set* Omega= getNeighbors(Sstar);

@@ -27,11 +27,11 @@ int main()
 {
 	//throw IllegalVectorSizeException(1,2);
 	//testMonte();
-//	testInDepth();
+	testInDepth();
 //	testInWidth();
 //	testvalue();
 //	testmera();
-	testGrayCode();
+//	testGrayCode();
 	//testfuncs();
 	getchar();
     return 0;

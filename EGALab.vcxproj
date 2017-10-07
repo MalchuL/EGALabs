@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractMethodSearching.h" />
+    <ClInclude Include="AnsambleSearchMethod.h" />
     <ClInclude Include="ByteVector.h" />
     <ClInclude Include="ByteVectorMath.h" />
     <ClInclude Include="CustomExceptions.h" />
