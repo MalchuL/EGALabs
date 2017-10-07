@@ -15,27 +15,34 @@
 using namespace exceptions;
 using namespace std;
 using namespace MethodSearching;
-void testmethod();
+void testMonte();
+void testInDepth();
+void testInWidth();
 void testvalue();
 void testmera();
 void testfuncs();
+void testGrayCode();
 constexpr int size = 5;
 int main()
 {
 	//throw IllegalVectorSizeException(1,2);
-//	testmethod();
+	//testMonte();
+//	testInDepth();
+//	testInWidth();
 //	testvalue();
 //	testmera();
-	testfuncs();
+	testGrayCode();
+	//testfuncs();
 	getchar();
     return 0;
 
 }
 void testfuncs() {
 	int vect1 = 0b00101;
-	cout << ByteVectorMath::GrayCode(ByteVector(0b000, 3))<<endl;
-	cout << ByteVectorMath::GrayCode(ByteVector(0b010, 3))<<endl;
-	cout << ByteVectorMath::GrayCode(ByteVector(0b110, 3))<<endl;
+	cout << ByteVectorMath::GrayCodeEncoder(ByteVector(0b000, 3))<<endl;
+	cout << ByteVectorMath::GrayCodeEncoder(ByteVector(0b010, 3))<<endl;
+	cout << ByteVectorMath::GrayCodeEncoder(ByteVector(0b110, 3))<<endl;
+	cout << ByteVector(0b110100,6)<<" "  <<ByteVectorMath::GrayCodeDecoder( ByteVectorMath::GrayCodeEncoder(ByteVector(0b110100, 6)))<<endl;
 	
 }
 void testmera() {
@@ -53,25 +60,86 @@ void testmera() {
 	
 
 }
-void testmethod() {
+void testMonte() {
 	srand(0);
 	//ByteVector* bytes = new ByteVector[32];
 	vector<ByteVector> vectors = vector<ByteVector>();
 	vector<funcvalue> values = vector<funcvalue>();
 	
-	for (size_t i = 0; i < 32; i++)
+	for (size_t i = 0; i < 1<<5; i++)
 	{
 		vectors.push_back(ByteVector(i, 5));
 		int t = abs(rand() % 60);
 		values.push_back(t);
 		clog << ByteVector(i, 5) << " " << t << endl;;
 	}
+
 	cout << "Monte Carlo"<<endl;
-	cout << MonteCarlosMethodSearching(vectors, values, 32, 6).find()<<endl << endl<<endl;
+	cout << MonteCarlosMethodSearching(vectors, values, 8, 39).find()<<endl << endl<<endl;
+
+}
+void testInDepth() {
+	srand(0);
+	//ByteVector* bytes = new ByteVector[32];
+	vector<ByteVector> vectors = vector<ByteVector>();
+	vector<funcvalue> values = vector<funcvalue>();
+
+	for (size_t i = 0; i < 1 << 5; i++)
+	{
+		vectors.push_back(ByteVector(i, 5));
+		int t = i;
+		values.push_back(t);
+		clog << ByteVector(i, 5) << " " << t << endl;;
+	}
+
 	cout << "In Depth" << endl;
-	cout << DepthSearchMethod(vectors, values, 10, 64).find() << endl<<endl<<endl;
+	cout << DepthSearchMethod(vectors, values, 10, 66).find() << endl << endl << endl;
+
+}
+void testGrayCode() {
+	srand(0);
+	//ByteVector* bytes = new ByteVector[32];
+	vector<ByteVector> vectors = vector<ByteVector>();
+	vector<funcvalue> values = vector<funcvalue>();
+	cout << "True values" << endl;
+	for (size_t i = 0; i < 1 << 5; i++)
+	{
+
+		int t = i - (2 << 4);
+		t *= t;
+		clog << ByteVector(i, 5) << " " << t << endl;
+	}
+	cout << "Gray code values" << endl;
+	for (size_t i = 0; i < 1 << 5; i++)
+	{
+		vectors.push_back(ByteVectorMath::GrayCodeEncoder(ByteVector(i, 5)));
+		int t = i - (2 << 4);
+		t *= t;
+		values.push_back(t);
+		clog << ByteVectorMath::GrayCodeEncoder( ByteVector(i, 5)) << " " << t << endl;
+	}
+
+	cout << "In Width with Gray code" << endl;
+	cout <<"Decoded value:"<<ByteVectorMath::GrayCodeDecoder( SearchInWidthMethod(vectors, values, 8, 29).find()) << endl << endl;
+}
+void testInWidth() {
+	srand(0);
+	//ByteVector* bytes = new ByteVector[32];
+	vector<ByteVector> vectors = vector<ByteVector>();
+	vector<funcvalue> values = vector<funcvalue>();
+
+	for (size_t i = 0; i < 1 << 5; i++)
+	{
+		vectors.push_back(ByteVector(i, 5));
+		int t = i - (2<<4);
+		t *= t;
+		values.push_back(t);
+		clog << ByteVector(i, 5) << " " << t << endl;;
+	}
+
 	cout << "In Width" << endl;
-	cout << SearchInWidthMethod(vectors, values, 8, 22).find() << endl << endl;
+	cout << SearchInWidthMethod(vectors, values, 8, 29).find() << endl << endl;
+
 }
 void testvalue() {
 	int testval = 0b01001;

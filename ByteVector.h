@@ -22,7 +22,7 @@ public:
 	ByteVector(int vect,int size);
 	//Конструктор копирования
 	ByteVector(const ByteVector& vect);
-	
+	ByteVector& operator=(const ByteVector& vect);
 	
 
 	~ByteVector();

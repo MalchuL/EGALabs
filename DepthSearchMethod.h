@@ -70,6 +70,10 @@ namespace MethodSearching {
 					Omega->erase(remove(Omega->begin(), Omega->end(), Si),Omega->end());
 					}
 				}
+				else
+				{
+					clog << "Omega is empty -> exit";break;
+				}
 				clog << "Si:" << *Si << ", f(Si):" << elements->at(Si) << ", S*:" << *Sstar << ", f(S*):" << max << ", Omega:";
 				printset(Omega, elements);
 				clog << endl;

@@ -48,7 +48,7 @@ namespace MethodSearching {
 				Si = reorderednums->at(i);
 				funcvalue Mu = elements->at(Si);
 				//clog << *Si << " " << elements->at(Si)<<endl;
-				if (Mu > max) { max = Mu;Sstar = Si; }
+				if (Mu > max) { max = Mu;Sstar = Si;clog << "S* changed "; }
 				clog << "Si:" << *Si << ", f(Si):" << elements->at(Si) << ", S*:" << *Sstar << ", f(S*):" << max<<endl;
 			}
 			//clog <<endl<<"value:"<<*Sstar<<" answer:"<< elements->at(Sstar);
