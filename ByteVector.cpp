@@ -40,13 +40,13 @@ ByteVector ByteVector::offestRight(int offsetsize) const {
 ByteVector ByteVector::offestLeft(int offsetsize) const { return offestRight(-offsetsize); }
 
 
-ByteVector& ByteVector::operator=(const ByteVector& vect) {
+ByteVector ByteVector::operator=(const ByteVector& vect) {
 	if (this->getLen() != vect.getLen())throw IllegalVectorSizeException(vect.getLen(),this->getLen());
 	for (size_t i = 0; i < getLen(); i++)
 	{
 		setByte(i, vect.getByte(i));
 	}
-	return *this;
+	return vect;
 }
 
 ByteVector ByteVector::SymmetrycSumm(const ByteVector & vect) const {

@@ -30,10 +30,10 @@ namespace MethodSearching {
 		ByteVector find() {
 			
 			int i = 0;
-			ByteVector* Sstar,*Si ;
-			Sstar = Si = getReorderedNums()->at(i);
+			ByteVector Si = getReorderedNums()->at(i);
+			ByteVector Sstar = Si;
 			funcvalue max = elements->at(Sstar);
-			clog << "S*:" << *Sstar << ", max:" << max<<endl;
+			clog << "S*:" << Sstar << ", max:" << max<<endl;
 			
 			for (i=1; i < getReorderedNums()->size()&&i<NSteps; i++)
 			{
@@ -42,11 +42,11 @@ namespace MethodSearching {
 				funcvalue Mu = elements->at(Si);
 				//clog << *Si << " " << elements->at(Si)<<endl;
 				if (Mu > max) { max = Mu;Sstar = Si;clog << "S* changed "; }
-				clog << "Si:" << *Si << ", f(Si):" << elements->at(Si) << ", S*:" << *Sstar << ", f(S*):" << max<<endl;
+				clog << "Si:" << Si << ", f(Si):" << elements->at(Si) << ", S*:" << Sstar << ", f(S*):" << max<<endl;
 			}
 			//clog <<endl<<"value:"<<*Sstar<<" answer:"<< elements->at(Sstar);
-			clog << "answer:" << *Sstar << " value:" << elements->at(Sstar) << endl;
-			return *Sstar;
+			clog << "answer:" << Sstar << " value:" << elements->at(Sstar) << endl;
+			return Sstar;
 		}
 		~MonteCarlosMethodSearching() {
 			

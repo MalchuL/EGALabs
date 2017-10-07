@@ -4,7 +4,7 @@
 #include <algorithm>
 #include "ByteVectorMath.h"
 using namespace std;
-typedef vector<ByteVector*> set;
+//typedef vector<ByteVector> set;
 namespace MethodSearching {
 
 	class DepthSearchMethod:public AbstractMethodSearching
@@ -12,11 +12,11 @@ namespace MethodSearching {
 	private:
 		const int NSteps;
 		int randomseed;
-		set* getNeighbors(ByteVector* vect){
+		set* getNeighbors(ByteVector vect){
 			set* returnedset = new set();
 			for (auto it = getReorderedNums()->begin(); it != getReorderedNums()->end(); it++)
 			{
-				if (ByteVectorMath::HemmingLength(**it, *vect) == 1) { returnedset->push_back(*it); }
+				if (ByteVectorMath::HemmingLength(*it, vect) == 1) { returnedset->push_back(*it); }
 			}
 			return returnedset;
 		}
@@ -39,10 +39,10 @@ namespace MethodSearching {
 		ByteVector find() {
 			
 			int i = 0;
-			ByteVector* Sstar,*Si;
-			Sstar = Si = getReorderedNums()->at(i);
+			ByteVector Si = getReorderedNums()->at(i);
+			ByteVector Sstar = Si;
 			funcvalue max = elements->at(Sstar);
-			clog << "S*:" << *Sstar << ", max:" << max<<", Omega:";
+			clog << "S*:" << Sstar << ", max:" << max<<", Omega:";
 			set* Omega= getNeighbors(Sstar);
 			printset(Omega, elements);
 			clog << endl;
@@ -67,13 +67,13 @@ namespace MethodSearching {
 				{
 					clog << "Omega is empty -> exit";break;
 				}
-				clog << "Si:" << *Si << ", f(Si):" << elements->at(Si) << ", S*:" << *Sstar << ", f(S*):" << max << ", Omega:";
+				clog << "Si:" << Si << ", f(Si):" << elements->at(Si) << ", S*:" << Sstar << ", f(S*):" << max << ", Omega:";
 				printset(Omega, elements);
 				clog << endl;
 			}
 			delete Omega;
-			clog << "answer:" << *Sstar << " value:" << elements->at(Sstar)<<endl;
-			return *Sstar;
+			clog << "answer:" << Sstar << " value:" << elements->at(Sstar)<<endl;
+			return Sstar;
 		
 		}
 		~DepthSearchMethod(){}

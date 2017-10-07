@@ -11,6 +11,7 @@
 #include "MonteCarlosMethodSearching.h"
 #include "DepthSearchMethod.h"
 #include "SearchInWidthMethod.h"
+#include "AnsambleSearchMethod.h"
 #include <vector>
 using namespace exceptions;
 using namespace std;
@@ -22,13 +23,15 @@ void testvalue();
 void testmera();
 void testfuncs();
 void testGrayCode();
+void testEnsemble();
 constexpr int size = 5;
 int main()
 {
 	//throw IllegalVectorSizeException(1,2);
 	//testMonte();
-	testInDepth();
-//	testInWidth();
+//	testInDepth();
+	//testInWidth();
+	testEnsemble();
 //	testvalue();
 //	testmera();
 //	testGrayCode();
@@ -120,7 +123,24 @@ void testGrayCode() {
 	}
 
 	cout << "In Width with Gray code" << endl;
-	cout <<"Decoded value:"<<ByteVectorMath::GrayCodeDecoder( SearchInWidthMethod(vectors, values, 8, 29).find()) << endl << endl;
+	cout <<"Decoded value:"<<ByteVectorMath::GrayCodeDecoder( SearchInWidthMethod(vectors, values, 8, 26).find()) << endl << endl;
+}
+void testEnsemble() {
+	srand(0);
+	//ByteVector* bytes = new ByteVector[32];
+	vector<ByteVector> vectors = vector<ByteVector>();
+	vector<funcvalue> values = vector<funcvalue>();
+
+	for (int i = 1; i < 1 << 7; i++)
+	{
+		vectors.push_back(ByteVector(i, 7));
+		funcvalue t = 5 * sin(i) + log(i);
+		values.push_back(t);
+		clog << ByteVector(i, 7) << " " << t << endl;;
+	}
+
+	cout << "Ensemble" << endl;
+	cout << AnsambleSearchMethod(vectors, values, 8, 8,22).find() << endl << endl;
 }
 void testInWidth() {
 	srand(0);
@@ -138,7 +158,7 @@ void testInWidth() {
 	}
 
 	cout << "In Width" << endl;
-	cout << SearchInWidthMethod(vectors, values, 8, 29).find() << endl << endl;
+	cout << SearchInWidthMethod(vectors, values, 8, 39).find() << endl << endl;
 
 }
 void testvalue() {
