@@ -60,7 +60,7 @@ namespace MethodSearching {
 					else
 					{
 						
-					Omega->erase(remove(Omega->begin(), Omega->end(), Si),Omega->end());
+					Omega->erase(remove(Omega->begin(), Omega->end(), Si));
 					}
 				}
 				else

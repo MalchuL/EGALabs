@@ -4,11 +4,12 @@
 #include <vector>
 #include <algorithm>
 #include "Logger.h"
-typedef float funcvalue;
-typedef vector<ByteVector> set;
-typedef map<ByteVector, funcvalue> func;
+
 using namespace std;
 namespace MethodSearching {
+	typedef float funcvalue;
+	typedef vector<ByteVector> set;
+	typedef map<ByteVector, funcvalue> func;
 	class AbstractMethodSearching
 	{
 	private:

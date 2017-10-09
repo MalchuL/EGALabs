@@ -14,9 +14,11 @@
 #include "AnsambleSearchMethod.h"
 #include <vector>
 #include "DispacementVector.h"
+#include "NeighborsSearchMethod.h"
 using namespace exceptions;
 using namespace std;
 using namespace MethodSearching;
+using namespace Salesman;
 void testMonte();
 void testInDepth();
 void testInWidth();
@@ -26,15 +28,17 @@ void testfuncs();
 void testGrayCode();
 void testEnsemble();
 void testDisplacementVector();
+void testNeighbors();
 constexpr int size = 5;
 int main()
 {
 	//throw IllegalVectorSizeException(1,2);
 	//testMonte();
 //	testInDepth();
+	testNeighbors();
 	//testInWidth();
 //	testEnsemble();
-	testDisplacementVector();
+//	testDisplacementVector();
 //	testvalue();
 //	testmera();
 //	testGrayCode();
@@ -153,6 +157,20 @@ void testDisplacementVector()
 	cout << test.CheckValue()<<endl;
 	test.setNum(1, 5);
 	cout << test.CheckValue() << endl;
+
+}
+void testNeighbors()
+{
+	const float inf = 1 << 16;
+	matrix matr = { {inf,10,5,9,16,8},
+					{6,inf,11,8,18,19},
+					{7,13,inf,3,4,14},
+					{5,9,6,inf,12,17},
+					{5,4,11,6,inf,14},
+					{17,7,12,13,16,inf} };
+	NeighborsSearchMethod neigh = NeighborsSearchMethod(matr);
+	cout << neigh.find();
+
 
 }
 void testInWidth() {
