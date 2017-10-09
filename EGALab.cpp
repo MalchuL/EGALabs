@@ -13,6 +13,7 @@
 #include "SearchInWidthMethod.h"
 #include "AnsambleSearchMethod.h"
 #include <vector>
+#include "DispacementVector.h"
 using namespace exceptions;
 using namespace std;
 using namespace MethodSearching;
@@ -24,6 +25,7 @@ void testmera();
 void testfuncs();
 void testGrayCode();
 void testEnsemble();
+void testDisplacementVector();
 constexpr int size = 5;
 int main()
 {
@@ -31,7 +33,8 @@ int main()
 	//testMonte();
 //	testInDepth();
 	//testInWidth();
-	testEnsemble();
+//	testEnsemble();
+	testDisplacementVector();
 //	testvalue();
 //	testmera();
 //	testGrayCode();
@@ -141,6 +144,16 @@ void testEnsemble() {
 
 	cout << "Ensemble" << endl;
 	cout << AnsambleSearchMethod(vectors, values, 8, 8,22).find() << endl << endl;
+}
+void testDisplacementVector()
+{
+	DispacementVector test(5);
+
+	cout << test <<endl;
+	cout << test.CheckValue()<<endl;
+	test.setNum(1, 5);
+	cout << test.CheckValue() << endl;
+
 }
 void testInWidth() {
 	srand(0);

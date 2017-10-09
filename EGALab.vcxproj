@@ -147,6 +147,7 @@
     <ClInclude Include="ByteVectorMath.h" />
     <ClInclude Include="CustomExceptions.h" />
     <ClInclude Include="DepthSearchMethod.h" />
+    <ClInclude Include="DispacementVector.h" />
     <ClInclude Include="IllegalVectorSizeException.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MonteCarlosMethodSearching.h" />
@@ -159,6 +160,7 @@
     <ClCompile Include="ByteVector.cpp" />
     <ClCompile Include="ByteVectorMath.cpp" />
     <ClCompile Include="DepthSearchMethod.cpp" />
+    <ClCompile Include="DispacementVector.cpp" />
     <ClCompile Include="EGALab.cpp" />
     <ClCompile Include="IllegalVectorSizeException.cpp" />
     <ClCompile Include="Logger.cpp" />
