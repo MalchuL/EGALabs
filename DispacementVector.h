@@ -37,6 +37,13 @@ public:
 	num getNum(int pos) const {
 		return displacement[pos-1];
 	}
+	void InsertWithRightOffset(int pos, num value) {
+		for (size_t i = getSize(); i > pos; i--)
+		{
+			setNum(i, getNum(i - 1));
+		}
+		setNum(pos, value);
+	}
 	DispacementVector(num * displacement, unsigned int size) {
 		this->displacement = vector<num>(size);
 		for (size_t i = 0; i < size; i++)

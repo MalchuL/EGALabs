@@ -152,6 +152,7 @@
     <ClInclude Include="IllegalVectorSizeException.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MonteCarlosMethodSearching.h" />
+    <ClInclude Include="NearestCitySearchMethod.h" />
     <ClInclude Include="NeighborsSearchMethod.h" />
     <ClInclude Include="SearchInWidthMethod.h" />
     <ClInclude Include="SetSizeException.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="IllegalVectorSizeException.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="MonteCarlosMethodSearching.cpp" />
+    <ClCompile Include="NearestCitySearchMethod.cpp" />
     <ClCompile Include="NeighborsSearchMethod.cpp" />
     <ClCompile Include="SearchInWidthMethod.cpp" />
     <ClCompile Include="SetSizeException.cpp" />

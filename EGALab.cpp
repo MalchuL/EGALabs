@@ -15,6 +15,7 @@
 #include <vector>
 #include "DispacementVector.h"
 #include "NeighborsSearchMethod.h"
+#include "NearestCitySearchMethod.h"
 using namespace exceptions;
 using namespace std;
 using namespace MethodSearching;
@@ -29,16 +30,18 @@ void testGrayCode();
 void testEnsemble();
 void testDisplacementVector();
 void testNeighbors();
+void testNearestNeighbors();
 constexpr int size = 5;
 int main()
 {
 	//throw IllegalVectorSizeException(1,2);
 	//testMonte();
 //	testInDepth();
-	testNeighbors();
+//	testNeighbors();
 	//testInWidth();
 //	testEnsemble();
-//	testDisplacementVector();
+	//testDisplacementVector();
+	testNearestNeighbors();
 //	testvalue();
 //	testmera();
 //	testGrayCode();
@@ -157,7 +160,15 @@ void testDisplacementVector()
 	cout << test.CheckValue()<<endl;
 	test.setNum(1, 5);
 	cout << test.CheckValue() << endl;
-
+	test = DispacementVector(5);
+	test.InsertWithRightOffset(1, 8);
+	cout << test << " ";
+	test = DispacementVector(5);
+	test.InsertWithRightOffset(3, 8);
+	cout << test << " ";
+	test = DispacementVector(5);
+	test.InsertWithRightOffset(5, 8);
+	cout << test << " "<<endl;
 }
 void testNeighbors()
 {
@@ -169,6 +180,20 @@ void testNeighbors()
 					{5,4,11,6,inf,14},
 					{17,7,12,13,16,inf} };
 	NeighborsSearchMethod neigh = NeighborsSearchMethod(matr);
+	cout << neigh.find();
+
+
+}
+void testNearestNeighbors()
+{
+	const float inf = 1 << 16;
+	matrix matr = { { inf,10,5,9,16,8 },
+	{ 6,inf,11,8,18,19 },
+	{ 7,13,inf,3,4,14 },
+	{ 5,9,6,inf,12,17 },
+	{ 5,4,11,6,inf,14 },
+	{ 17,7,12,13,16,inf } };
+	NearestCitySearchMethod neigh = NearestCitySearchMethod(matr);
 	cout << neigh.find();
 
 

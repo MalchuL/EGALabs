@@ -26,12 +26,7 @@ namespace Salesman {
 			return neighbor;
 		}
 	public:
-		void printMatrix() {
-			const matrix& matr = getMatrix();
-			for(auto row:matr){
-				PrintVectorValue(row,false);clog << endl;
-			}
-		}
+		
 		NeighborsSearchMethod(matrix data) :AbstractSalesmanSearchMethod(data), size(data.size()) {}
 		DispacementVector find() {
 			printMatrix();
@@ -70,31 +65,7 @@ namespace Salesman {
 			return returnedvector;
 		}
 
-		void printSet(set X) {
-			clog << "[";
-			for (num xi : X) {
-				clog << xi << ",";
-			}
-			clog << "]";
-		}
-
-
-		static void PrintVectorValue(const vector<value>&X,bool printIndex) {
-			clog << "[";
-			int i = 0;
-			for (num xi : X) {
-				i++;
-				if (printIndex)
-				{
-					clog << i << ":" << xi << ",";
-				}
-				else
-				{
-					clog << xi << ",";
-				}
-			}
-			clog << "]";
-		}
+		
 	};
 
 	
