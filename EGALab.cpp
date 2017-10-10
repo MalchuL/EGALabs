@@ -37,11 +37,11 @@ int main()
 	//throw IllegalVectorSizeException(1,2);
 	//testMonte();
 //	testInDepth();
-//	testNeighbors();
+	testNeighbors();
 	//testInWidth();
 //	testEnsemble();
 	//testDisplacementVector();
-	testNearestNeighbors();
+//	testNearestNeighbors();
 //	testvalue();
 //	testmera();
 //	testGrayCode();
@@ -187,6 +187,7 @@ void testNeighbors()
 void testNearestNeighbors()
 {
 	const float inf = 1 << 16;
+	srand(69);
 	matrix matr = { { inf,10,5,9,16,8 },
 	{ 6,inf,11,8,18,19 },
 	{ 7,13,inf,3,4,14 },

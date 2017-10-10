@@ -68,7 +68,6 @@ namespace Salesman {
 			printMatrix();
 			DispacementVector returnedvector(size);
 			set X;
-			srand(10);
 			for (size_t i = 1; i <= size; i++)
 			{
 				X.push_back(i);
@@ -81,7 +80,6 @@ namespace Salesman {
 			int iteration = 1;
 			clog << "Iteration " << iteration<<endl;
 			returnedvector.setNum(iteration, si);
-			value distancev = 0;
 			set usedCities;
 			usedCities.push_back(si);
 			clog << "si:";
@@ -119,11 +117,26 @@ namespace Salesman {
 
 
 			}
+
 			cout << "from " << si << " to " << first_x << ":" << getMatrix()[si - 1][first_x - 1] << endl;
-			distancev += getMatrix()[si - 1][first_x - 1];
+			value distancev  = calculateDistance( getMatrix(),returnedvector);
 			clog << returnedvector << ":" << distancev << endl;
 			return returnedvector;
 			
+		}
+		value calculateDistance(matrix data, DispacementVector path) {
+			value distance = 0;
+			for (size_t city = 1; city <= path.getSize(); city++)
+			{
+				num from= path.getNum(city);
+				
+				num to= path.getNum((city + 1)>path.getSize()?1:city+1);
+			//	clog << from <<" "<< to <<" "<<data[from-1][to-1] <<endl;
+				clog << from<< " " << to <<" "<< data[from - 1][to-1] << " "<<endl;
+				distance += data[from - 1][(path.getNum((city) % (path.getSize()) + 1)) - 1];
+			}
+			clog << endl;
+			return distance;
 		}
 		
 	};
