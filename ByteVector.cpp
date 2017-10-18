@@ -49,6 +49,29 @@ ByteVector ByteVector::operator=(const ByteVector& vect) {
 	return vect;
 }
 
+bool ByteVector::operator<(const ByteVector & other) const {
+	if (getLen() != other.getLen())throw IllegalVectorSizeException(getLen(), other.getLen());
+	for (int i = 0; i < getLen(); i++)
+	{
+		//Индексы надо считать справа
+		int index = getLen() - i - 1;
+		//Если хотя бы один индекс не равен то если у этого объекта 0, то он меньше
+		if (getByte(index) != other.getByte(index))return !getByte(index);
+	}
+	return false;
+}
+
+bool ByteVector::operator==(const ByteVector & other) const
+{
+	if (getLen() != other.getLen())throw 1;
+	for (int i = 0; i < getLen(); i++)
+	{
+
+		if (getByte(i) != other.getByte(i))return false;
+	}
+	return true;
+}
+
 ByteVector ByteVector::SymmetrycSumm(const ByteVector & vect) const {
 	if (this->getLen() != vect.getLen())throw IllegalVectorSizeException(this->getLen(), vect.getLen());
 	ByteVector returnedvect = ByteVector(this->getLen());

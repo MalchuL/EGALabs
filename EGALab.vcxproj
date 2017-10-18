@@ -167,10 +167,6 @@
     <ClCompile Include="EGALab.cpp" />
     <ClCompile Include="IllegalVectorSizeException.cpp" />
     <ClCompile Include="Logger.cpp" />
-    <ClCompile Include="MonteCarlosMethodSearching.cpp" />
-    <ClCompile Include="NearestCitySearchMethod.cpp" />
-    <ClCompile Include="NeighborsSearchMethod.cpp" />
-    <ClCompile Include="SearchInWidthMethod.cpp" />
     <ClCompile Include="SetSizeException.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

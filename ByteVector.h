@@ -24,26 +24,8 @@ public:
 	//Конструктор копирования
 	ByteVector(const ByteVector& vect);
 	ByteVector operator=(const ByteVector& vect);
-	bool operator<(const ByteVector& other)const {
-		if (getLen() != other.getLen())throw 1;
-		for (int i = 0; i < getLen(); i++)
-		{	
-			//Индексы надо считать справа
-			int index = getLen() - i - 1;
-			//Если хотя бы один индекс не равен то если у этого объекта 0, то он меньше
-			if (getByte(index) != other.getByte(index))return !getByte(index);
-		}
-		return false;
-	}
-	bool operator==(const ByteVector& other)const {
-		if (getLen() != other.getLen())throw 1;
-		for (int i = 0; i < getLen(); i++)
-		{
-
-			if (getByte(i) != other.getByte(i))return false;
-		}
-		return true;
-	}
+	bool operator<(const ByteVector& other)const;
+	bool operator==(const ByteVector& other)const;
 	~ByteVector();
 	friend ostream& operator<<(ostream& a, const ByteVector&vect);
 };

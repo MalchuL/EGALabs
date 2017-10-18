@@ -51,25 +51,24 @@ namespace Salesman {
 			}
 			clog << "]" << endl;
 			//clog << "------" << min << "-------";
-			clog << "nearest neighbor ";
+			clog << "neares neighbor ";
 			clog <<"from:"<<get<0>(min_tuple) <<" to:" << get<1>(min_tuple) << ": distance "<<min << endl;
 			return min_tuple;
 		}
 		void printDisplacementPart(DispacementVector&vector,int from, int to) {
-			clog << "(";
 			for (size_t i = from; i <= to; i++)
 			{
-				clog << vector.getNum(i)<<",";
+				clog << vector.getNum(i);
 			}
-			clog << ")";
 		}
 	public:
-		NearestCitySearchMethod(matrix data, int randomSeed) :AbstractSalesmanSearchMethod(data), size(data.size()) { srand(randomSeed); }
+		NearestCitySearchMethod(matrix data) :AbstractSalesmanSearchMethod(data), size(data.size()) {}
 
 		DispacementVector find() {
 			printMatrix();
 			DispacementVector returnedvector(size);
 			set X;
+			srand(10);
 			for (size_t i = 1; i <= size; i++)
 			{
 				X.push_back(i);
@@ -130,12 +129,12 @@ namespace Salesman {
 			value distance = 0;
 			for (size_t city = 1; city <= path.getSize(); city++)
 			{
-				num from= path.getNum(city);
-				
-				num to= path.getNum((city + 1)>path.getSize()?1:city+1);
+			//	num from=path.getNum(city);
+				clog<<city<<" " << (city-1) % (path.getSize()-1)<<endl;
+			//	num to=	path.getNum((city + 1) % (path.getSize() + 1));
 			//	clog << from <<" "<< to <<" "<<data[from-1][to-1] <<endl;
-			//	clog << from<< " " << to <<" "<< data[from - 1][to-1] << " "<<endl;
-				distance += data[from - 1][(path.getNum((city) % (path.getSize()) + 1)) - 1];
+			//	clog << path.getNum(city) << " " << path.getNum((city + 1) % (path.getSize() + 1)) <<" "<< data[path.getNum(city) - 1][(path.getNum((city) % (path.getSize()) + 1))-1] << " "<<endl;
+			//	distance += data[from - 1][(path.getNum((city) % (path.getSize()) + 1)) - 1];
 			}
 			clog << endl;
 			return distance;

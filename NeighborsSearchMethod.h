@@ -27,12 +27,11 @@ namespace Salesman {
 		}
 	public:
 		
-		NeighborsSearchMethod(matrix data) :AbstractSalesmanSearchMethod(data), size(data.size()) {}
+		NeighborsSearchMethod(matrix data, int randomSeed) :AbstractSalesmanSearchMethod(data), size(data.size()) { srand(randomSeed); }
 		DispacementVector find() {
 			printMatrix();
 			DispacementVector returnedvector(size);
 			set X;
-			srand(10);
 			for (size_t i = 1; i <= size; i++)
 			{
 				X.push_back(i);

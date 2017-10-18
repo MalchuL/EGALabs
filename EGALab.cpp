@@ -16,6 +16,9 @@
 #include "DispacementVector.h"
 #include "NeighborsSearchMethod.h"
 #include "NearestCitySearchMethod.h"
+#include <iostream>
+#include <fstream>
+#include <string>
 using namespace exceptions;
 using namespace std;
 using namespace MethodSearching;
@@ -31,17 +34,19 @@ void testEnsemble();
 void testDisplacementVector();
 void testNeighbors();
 void testNearestNeighbors();
+matrix ParseMatrixFromFile(string filename, int size);
 constexpr int size = 5;
 int main()
 {
 	//throw IllegalVectorSizeException(1,2);
 	//testMonte();
-//	testInDepth();
-	testNeighbors();
+	testInDepth();
+	//testNeighbors();
 	//testInWidth();
 //	testEnsemble();
 	//testDisplacementVector();
-//	testNearestNeighbors();
+	testNearestNeighbors();
+	
 //	testvalue();
 //	testmera();
 //	testGrayCode();
@@ -133,7 +138,7 @@ void testGrayCode() {
 	}
 
 	cout << "In Width with Gray code" << endl;
-	cout <<"Decoded value:"<<ByteVectorMath::GrayCodeDecoder( SearchInWidthMethod(vectors, values, 8, 26).find()) << endl << endl;
+	cout <<"Decoded value:"<<ByteVectorMath::GrayCodeDecoder( SearchInWidthMethod(vectors, values, 8, 32).find()) << endl << endl;
 }
 void testEnsemble() {
 	srand(0);
@@ -150,7 +155,7 @@ void testEnsemble() {
 	}
 
 	cout << "Ensemble" << endl;
-	cout << AnsambleSearchMethod(vectors, values, 8, 8,22).find() << endl << endl;
+	cout << AnsambleSearchMethod(vectors, values, 4, 4,23).find() << endl << endl;
 }
 void testDisplacementVector()
 {
@@ -179,22 +184,45 @@ void testNeighbors()
 					{5,9,6,inf,12,17},
 					{5,4,11,6,inf,14},
 					{17,7,12,13,16,inf} };
-	NeighborsSearchMethod neigh = NeighborsSearchMethod(matr);
+	NeighborsSearchMethod neigh = NeighborsSearchMethod(ParseMatrixFromFile("SalesmanData.txt", 15),1);
 	cout << neigh.find();
 
 
 }
+matrix ParseMatrixFromFile(string filename,int size) {
+	matrix returnedmatrix;
+	ifstream fin;
+	fin.open(filename);
+	vector<value> row;
+	int column = 0;
+	while (!fin.eof())
+	{
+		value val;
+		fin >> val;
+	//	cout << val<<" ";
+		row.push_back(val);
+		column++;
+		if (column >= size) {
+		//	cout << endl;
+			returnedmatrix.push_back(row);
+			row.clear();
+			column = 0;
+		}
+	}
+	return returnedmatrix;
+}
 void testNearestNeighbors()
 {
 	const float inf = 1 << 16;
-	srand(69);
+	srand(82);
 	matrix matr = { { inf,10,5,9,16,8 },
 	{ 6,inf,11,8,18,19 },
 	{ 7,13,inf,3,4,14 },
 	{ 5,9,6,inf,12,17 },
 	{ 5,4,11,6,inf,14 },
 	{ 17,7,12,13,16,inf } };
-	NearestCitySearchMethod neigh = NearestCitySearchMethod(matr);
+	//NearestCitySearchMethod neigh = NearestCitySearchMethod(matr);
+	NearestCitySearchMethod neigh = NearestCitySearchMethod(ParseMatrixFromFile("SalesmanData.txt", 15),8);
 	cout << neigh.find();
 
 
