@@ -19,10 +19,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "GreedyBackpackSearchMethod.h"
+#include "GreedyDancigBackpackSearchMethod.h"
 using namespace exceptions;
 using namespace std;
 using namespace MethodSearching;
 using namespace Salesman;
+using namespace BackpackSearchMethod;
 void testMonte();
 void testInDepth();
 void testInWidth();
@@ -34,23 +37,26 @@ void testEnsemble();
 void testDisplacementVector();
 void testNeighbors();
 void testNearestNeighbors();
+void testBackpack();
+void testDancigBackpack();
 matrix ParseMatrixFromFile(string filename, int size);
 constexpr int size = 5;
 int main()
 {
 	//throw IllegalVectorSizeException(1,2);
-	//testMonte();
-	testInDepth();
-	//testNeighbors();
-	//testInWidth();
+//	testMonte();
+//	testInDepth();
+//	testNeighbors();
+//	testInWidth();
 //	testEnsemble();
-	//testDisplacementVector();
-	testNearestNeighbors();
-	
+//	testDisplacementVector();
+//	testNearestNeighbors();
+	testBackpack();
+	testDancigBackpack();
 //	testvalue();
 //	testmera();
 //	testGrayCode();
-	//testfuncs();
+//	testfuncs();
 	getchar();
     return 0;
 
@@ -63,6 +69,32 @@ void testfuncs() {
 	cout << ByteVector(0b110100,6)<<" "  <<ByteVectorMath::GrayCodeDecoder( ByteVectorMath::GrayCodeEncoder(ByteVector(0b110100, 6)))<<endl;
 	
 }
+void testBackpack() {
+
+	srand(12);
+	vector<weightvalue> weights;
+	vector<costvalue> costs;
+	for (size_t i = 0; i < 20; i++)
+	{
+		weights.push_back(rand() % 41+1);
+		costs.push_back(rand() % 13+1);
+	}
+	clog << "Answer is:" << GreedyBackpackSearchMethod(weights, costs, 41).find();
+}
+
+void testDancigBackpack() {
+
+	srand(11);
+	vector<weightvalue> weights;
+	vector<costvalue> costs;
+	for (size_t i = 0; i < 20; i++)
+	{
+		weights.push_back(rand() % 41 + 1);
+		costs.push_back(rand() % 13 + 1);
+	}
+	clog << "Answer is:" << GreedyDancigBackpackSearchMethod(weights, costs, 41).find();
+}
+
 void testmera() {
 	int vect1 = 0b00101;
 	int vect2 = 0b00110;

@@ -17,5 +17,13 @@ public:
 		}
 		return returnedvector;
 	}
+	static ByteVector Reverse(const ByteVector& vect) {
+		ByteVector returnedVector(vect.getLen());
+		for (size_t i = 0; i <vect.getLen(); i++)
+		{
+			returnedVector.setByte(i, vect.getByte(vect.getLen() - i - 1));
+		}
+		return returnedVector;
+	}
 };
 

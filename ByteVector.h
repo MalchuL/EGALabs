@@ -9,9 +9,9 @@ private:
 	//Все хранится наоборот
 	byte* word;
 	const int size;
-	ByteVector(int size);
+	
 public:
-
+	ByteVector(int size);
 	int getLen() const { return size; }
 	byte getByte(int id)  const;
 	void setByte(int id, byte value);

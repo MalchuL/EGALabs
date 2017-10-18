@@ -141,6 +141,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractBackpackSearchMethod.h" />
     <ClInclude Include="AbstractMethodSearching.h" />
     <ClInclude Include="AbstractSalesmanSearchMethod.h" />
     <ClInclude Include="AnsambleSearchMethod.h" />
@@ -149,6 +150,8 @@
     <ClInclude Include="CustomExceptions.h" />
     <ClInclude Include="DepthSearchMethod.h" />
     <ClInclude Include="DispacementVector.h" />
+    <ClInclude Include="GreedyBackpackSearchMethod.h" />
+    <ClInclude Include="GreedyDancigBackpackSearchMethod.h" />
     <ClInclude Include="IllegalVectorSizeException.h" />
     <ClInclude Include="Logger.h" />
     <ClInclude Include="MonteCarlosMethodSearching.h" />
@@ -160,11 +163,14 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AbstractBackpackSearchMethod.cpp" />
     <ClCompile Include="ByteVector.cpp" />
     <ClCompile Include="ByteVectorMath.cpp" />
     <ClCompile Include="DepthSearchMethod.cpp" />
     <ClCompile Include="DispacementVector.cpp" />
     <ClCompile Include="EGALab.cpp" />
+    <ClCompile Include="GreedyBackpackSearchMethod.cpp" />
+    <ClCompile Include="GreedyDancigBackpackSearchMethod.cpp" />
     <ClCompile Include="IllegalVectorSizeException.cpp" />
     <ClCompile Include="Logger.cpp" />
     <ClCompile Include="SetSizeException.cpp" />
