@@ -17,6 +17,8 @@ num Salesman::NearestCitySearchMethod::getNeighbor(num city, set X, const matrix
 }
 
 //Первый аргумент возвращаемого значения - позиция, а второй - какой надо вставить
+constexpr int FROM = 0;
+constexpr int TO = 1;
 
 tuple<num, num> Salesman::NearestCitySearchMethod::getNearestNeighbor(set cities, set X, const matrix & data) {
 
@@ -46,7 +48,7 @@ tuple<num, num> Salesman::NearestCitySearchMethod::getNearestNeighbor(set cities
 	clog << "]" << endl;
 	//clog << "------" << min << "-------";
 	clog << "nearest neighbor ";
-	clog << "from:" << get<0>(min_tuple) << " to:" << get<1>(min_tuple) << ": distance " << min << endl;
+	clog << "from:" << get<FROM>(min_tuple) << " to:" << get<TO>(min_tuple) << ": distance " << min << endl;
 	return min_tuple;
 }
 
@@ -89,8 +91,8 @@ DispacementVector Salesman::NearestCitySearchMethod::find() {
 		clog << "Iteration " << iteration << endl;
 		//Вычислить от какого города до какого достигается минимум
 		tuple<num, num> nearestCity = getNearestNeighbor(usedCities, X, getMatrix());
-		num fromCity = get<0>(nearestCity);
-		num toCity = get<1>(nearestCity);
+		num fromCity = get<FROM>(nearestCity);
+		num toCity = get<TO>(nearestCity);
 		//
 		//Найдем среди перестановки наш город
 		clog << "si before:";

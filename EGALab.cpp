@@ -44,19 +44,19 @@ constexpr int size = 5;
 int main()
 {
 	//throw IllegalVectorSizeException(1,2);
-	testMonte();
+	/*testMonte();
 	testInDepth();
 	testNeighbors();
 	testInWidth();
 	testEnsemble();
-	testDisplacementVector();
+	testDisplacementVector();*/
 	testNearestNeighbors();
-	testBackpack();
+/*	testBackpack();
 	testDancigBackpack();
 	testvalue();
 	testmera();
 	testGrayCode();
-	testfuncs();
+	testfuncs();*/
 	getchar();
     return 0;
 
