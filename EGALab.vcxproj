@@ -153,7 +153,6 @@
     <ClInclude Include="GreedyBackpackSearchMethod.h" />
     <ClInclude Include="GreedyDancigBackpackSearchMethod.h" />
     <ClInclude Include="IllegalVectorSizeException.h" />
-    <ClInclude Include="Logger.h" />
     <ClInclude Include="MonteCarlosMethodSearching.h" />
     <ClInclude Include="NearestCitySearchMethod.h" />
     <ClInclude Include="NeighborsSearchMethod.h" />
@@ -164,6 +163,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstractBackpackSearchMethod.cpp" />
+    <ClCompile Include="AbstractMethodSearching.cpp" />
+    <ClCompile Include="AbstractSalesmanSearchMethod.cpp" />
+    <ClCompile Include="AnsambleSearchMethod.cpp" />
     <ClCompile Include="ByteVector.cpp" />
     <ClCompile Include="ByteVectorMath.cpp" />
     <ClCompile Include="DepthSearchMethod.cpp" />
@@ -172,7 +174,10 @@
     <ClCompile Include="GreedyBackpackSearchMethod.cpp" />
     <ClCompile Include="GreedyDancigBackpackSearchMethod.cpp" />
     <ClCompile Include="IllegalVectorSizeException.cpp" />
-    <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="MonteCarlosMethodSearching.cpp" />
+    <ClCompile Include="NearestCitySearchMethod.cpp" />
+    <ClCompile Include="NeighborsSearchMethod.cpp" />
+    <ClCompile Include="SearchInWidthMethod.cpp" />
     <ClCompile Include="SetSizeException.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

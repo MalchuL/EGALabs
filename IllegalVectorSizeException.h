@@ -10,9 +10,7 @@ namespace exceptions {
 		IllegalVectorSizeException();
 		int vect1, vect2;
 	public:
-		const char* what() const {
-			return (string("One vector has length ") + std::to_string(vect1) + string(" but other length is ") + std::to_string(vect2)).c_str();
-		}
+		const char* what() const;
 		
 		IllegalVectorSizeException(int vectSize1,int vectSize2);
 		~IllegalVectorSizeException();
